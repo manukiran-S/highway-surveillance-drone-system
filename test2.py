@@ -6,7 +6,7 @@ import threading
 import time
 
 app = Flask(__name__)
-app.secret_key = '0841'  
+app.secret_key = '1234'  
 
 model = YOLO('yolov8s.pt')
 VEHICLE_CLASSES = {"car", "truck", "motorcycle", "bus"}
@@ -16,7 +16,7 @@ frame = None
 tello = None
 
 # User authentication
-USERS = {'admin': 'password123', 'manu': '0841'}
+USERS = {'admin': 'password123', 'name': '1234'}
 
 
 def video_stream():
