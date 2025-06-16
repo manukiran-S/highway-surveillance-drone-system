@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to right, black 20%, #00c8c8 80%);
+            text-align: center;
+            padding-top: 80px; /* Prevents navbar overlap */
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 1000;
+        }
+
+        .navbar .title {
+            font-size: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #6200ea;
+        }
+
+        /* Adjusted Dashboard */
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90vw;
+            max-width: 1600px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            height: auto;
+        }
+
+        /* Responsive Video Feed */
+        #videoFeed {
+            width: 100%;
+            max-width: 1280px;
+            height: auto;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        button {
+            padding: 15px 20px;
+            font-size: 18px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #3700b3;
+        }
+
+        .info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .alert {
+            color: red;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="title">HIGHWAY SURVEILLANCE USING DRONE (YOLOv8)</div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('about') }}">About</a>
+        </div>
+    </div>
+
+    <!-- Full-Width Drone Control Panel -->
+    <div class="dashboard">
+        <h2>Drone Control Panel</h2>
+        <img id="videoFeed" src="{{ url_for('video_feed') }}" />
+        <div class="controls">
+            <button onclick="sendCommand('takeoff')">Take Off</button>
+            <button onclick="sendCommand('land')">Land</button>
+            <button onclick="sendCommand('up')">Up</button>
+            <button onclick="sendCommand('down')">Down</button>
+            <button onclick="sendCommand('left')">Left</button>
+            <button onclick="sendCommand('right')">Right</button>
+            <button onclick="sendCommand('rotate_left')">rotate_Left</button>
+            <button onclick="sendCommand('rotate_right')">rotate_Right</button>            
+            <button onclick="sendCommand('forward')">Forward</button>
+            <button onclick="sendCommand('backward')">Backward</button>
+        </div>
+        <div class="info">
+            <p>Battery: <span id="battery">--%</span></p>
+            <p>Vehicles Detected: <span id="vehicleCount">0</span></p>
+            <p id="trafficAlert" class="alert"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Highway Surveillance Drone</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, black 20%, #00c8c8 80%);
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            z-index: 1000;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 22px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #6200ea;
+        }
+
+        /* About Section */
+        .about-container {
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+            text-align: left;
+        }
+
+        h2, h3 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 24px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        p1 {
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #00e6e6;
+            font-weight: bold;
+        }
+
+        /* Drone Image */
+        .drone-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin: 40px 0;
+        }
+
+        .drone-image img {
+            width: 500px;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .drone-info {
+            max-width: 55%;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .drone-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .drone-info {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="title">HIGHWAY SURVEILLANCE USING DRONE (YOLOv8)</div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Dashboard</a>
+            <a href="{{ url_for('about') }}">About</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-container">
+        <h2>About the <span class="highlight">Highway Surveillance Drone</span></h2>
+        <p>
+            The <span class="highlight">Highway Surveillance Drone System</span> is an AI(ML AND DL)-powered system that utilizes the 
+            <span class="highlight">DJI Tello</span> drone with <span class="highlight">YOLOv8</span> for **real-time traffic monitoring, vehicle detection, and analysis**.
+        </p>
+
+        <h3> Drone Used: <span class="highlight">DJI Tello</span></h3>
+        <div class="drone-section">
+            <div class="drone-image">
+                <img src="https://m.media-amazon.com/images/I/61Jxu6gUlYL.jpg" alt="DJI Tello Drone">
+            </div>
+            <div class="drone-info">
+                <h3>📌 DJI Tello Specifications</h3>
+                <p>✅ <b>Camera:</b> 5MP (2592x1936), HD 720p Live Streaming</p>
+                <p>✅ <b>Flight Time:</b> ~13 minutes</p>
+                <p>✅ <b>Control Range:</b> ~100 meters</p>
+                <p>✅ <b>Weight:</b> 80g</p>
+                <p>✅ <b>Max Speed:</b> 8 m/s</p>
+                <p>✅ <b>Features:</b> Optical Flow, Electronic Image Stabilization, VR Compatibility</p>
+            </div>
+        </div>
+
+        <h3>📡 How It Works</h3>
+        <p>
+            1️⃣ Drone Captures Live Video - DJI Tello records highway traffic.<br>
+            2️⃣ AI Processing with YOLOv8 - Detects & classifies vehicles.<br>
+            3️⃣ Traffic Analysis - Detects congestion, accidents & road events.<br>
+            4️⃣ Data Transmission - Live feed & analysis sent to dashboard.<br>
+            5️⃣ User Dashboard - Flask web dashboard displays real-time results.
+        </p>
+
+        <h3> YOLOv8 - AI Object Detection</h3>
+        <p>
+            <b>YOLOv8 (You Only Look Once v8)</b> is an advanced AI model that enables **real-time object detection**.  
+            Our system uses YOLOv8 to detect **vehicles**, **traffic congestion**, and **road anomalies** with high accuracy.
+        </p>
+
+        <h3> Why YOLOv8?</h3>
+        <p>
+            ✅ Ultra-Fast Object Detection - Detects multiple vehicles in milliseconds.<br>
+            ✅ Optimized for Real-Time Performance - Ensures smooth & accurate detection.<br>
+            ✅ Highly Accurate AI Model - Works even in low-light conditions.<br>
+            ✅ Low Latency Processing - Ideal for live video surveillance.
+        </p>
+
+        <h3>🛠️ Technologies Used</h3>
+        <p>
+            - Hardware: DJI Tello Drone, Laptop for AI processing.<br>
+            - AI Model: YOLOv8 for vehicle detection.<br>
+            - Web Framework: Flask for dashboard.<br>
+            - Frontend: HTML, CSS, JavaScript.
+        </p>
+
+        <h3> Future Enhancements</h3>
+        <p>
+            ✅ Thermal Camera Integration - Enables night-time monitoring.<br>
+            ✅ Accident Detection Alerts - Auto-alerts for traffic incidents.<br>
+            ✅ Enhanced Drone Autonomy - Smart AI-driven navigation.
+        </p>
+
+    </div>
+
+</body>
+</html>
